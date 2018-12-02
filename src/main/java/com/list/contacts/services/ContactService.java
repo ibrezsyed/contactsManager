@@ -22,6 +22,23 @@ public class ContactService {
        return contactsRepository.findAll();
     }
 
+    public Contact getContactByPhoneNumber(String phoneNumber) {
+        return contactsRepository.getContactByPhoneNumber(phoneNumber);
+    }
+
+    public Contact getContactById(int id) {
+        return contactsRepository.getOne(id);
+    }
+
+    public void updateContact(Contact contact){
+
+       contactsRepository.save(contact);
+    }
+
+    public void deleteContact(int id) {
+        contactsRepository.deleteById(id);
+    }
+
     /*public Contact editContact(Contact contact) {
         Contact storedContact = contactsRepository.getOne(contact.getId());
     }*/

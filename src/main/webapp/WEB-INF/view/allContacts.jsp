@@ -7,10 +7,11 @@
 
 	<table>
 	<tr>
+	    <th>Id</th>
 	    <th>First Name</th>
 	    <th>Last Name</th>
-	    <th>Email:</th>
-	    <th>Phone Number:</th>
+	    <th>Email</th>
+	    <th>Phone Number</th>
 	    <th>Address</th>
 	    <th>BirthDate</th>
 	    <th>Related Name</th>
@@ -21,6 +22,7 @@
 
     <c:forEach items="${allContacts}" var="contact" >
     <tr>
+        <td>${contact.id}</td>
         <td>${contact.firstName}</td>
         <td>${contact.lastName}</td>
         <td>${contact.email}</td>
@@ -31,6 +33,9 @@
         <td>${contact.socialProfile}</td>
         <td>${contact.instantMessage}</td>
         <td>${contact.company}</td>
+
+        <td><a href="editContact?id=${contact.id}">Edit</a></td>
+        <td><a href="deleteContact?id=${contact.id}">DELETE</a></td>
     </tr>
     </c:forEach>
 	</table>

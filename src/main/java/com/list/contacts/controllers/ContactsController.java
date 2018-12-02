@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class ContactsController {
         log.info("Contact Info: "+ contact.getFirstName()+" "+ contact.getLastName());
         Contact addedContact = contactService.addContact(contact);
         modelMap.addAttribute("contactId", "Contact Saved Successfully with Id: "+addedContact.getId());
-        return "homepage";
+        return "addContact";
     }
 
     @RequestMapping(value = "/getAllContacts", method = RequestMethod.GET)
@@ -35,4 +36,41 @@ public class ContactsController {
         modelMap.addAttribute("allContacts", allContacts);
         return "allContacts";
     }
+
+    @RequestMapping(value = "/editContact", method = RequestMethod.GET)
+    public String editConntact(@RequestParam("id") int id, ModelMap modelMap) {
+
+        Contact contactFromDB = contactService.getContactById(id);
+        log.info("Contact By Id from DB:   "+ contactFromDB);
+
+        modelMap.addAttribute("contact", contactFromDB);
+        return "UpdateContact";
+    }
+
+    @RequestMapping(value = "/deleteContact", method = RequestMethod.GET)
+    public String deleteContact(@RequestParam("id") int id, ModelMap modelMap) {
+
+        contactService.deleteContact(id);
+        List<Contact> allContacts = contactService.getContacts();
+        modelMap.addAttribute("allContacts", allContacts);
+        return "allContacts";
+    }
+
+    @RequestMapping(value = "/updateContact", method = RequestMethod.POST)
+    public String updateContact(@ModelAttribute("contact") Contact contact, ModelMap modelMap) {
+
+        contactService.updateContact(contact);
+        List<Contact> allContacts = contactService.getContacts();
+        modelMap.addAttribute("allContacts", allContacts);
+        return "allContacts";
+    }
+
+    /*@RequestMapping(value = "/editContact", method = RequestMethod.GET)
+    public String searchByPhoneNumber(@RequestParam("phoneNumber") String phoneNumber, ModelMap modelMap) {
+       Contact contactFromDB = contactService.getContactByPhoneNumber(phoneNumber);
+       log.info("Contact By phone Number:   "+ contactFromDB);
+
+       modelMap.addAttribute("contact", contactFromDB);
+       return "UpdateContact";
+    }*/
 }
