@@ -20,6 +20,12 @@ public class ContactsController {
     @Autowired
     private ContactService contactService;
 
+    /**
+     * Saves a given Contact
+     * @param contact
+     * @param modelMap
+     * @return
+     */
     @RequestMapping(value = "/addContact", method = RequestMethod.POST)
     public String addContact(@ModelAttribute("contact") Contact contact, ModelMap modelMap){
 

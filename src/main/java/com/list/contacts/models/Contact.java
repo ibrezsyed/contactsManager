@@ -18,9 +18,6 @@ public class Contact {
     private String phoneNumber;
     private String address;
     private String birthDate;
-    private String relatedName;
     private String socialProfile;
-    private String instantMessage;
-    private String company;
 //    private String photo;
 }
