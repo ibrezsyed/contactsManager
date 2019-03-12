@@ -54,10 +54,8 @@
 </div>
 </div>
 ${contactId}
+
+
 <a href="getAllContacts">Fetch Contacts</a>
-<br>
-<c:if test="${dupContact != ''}">
-    	<span><b>${dupContact }</b></span>
-    	</c:if>
 </body>
 </html>

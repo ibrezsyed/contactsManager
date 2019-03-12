@@ -25,11 +25,11 @@ public class ContactsApplicationTests {
 	@Autowired
 	ContactService contactService;
 
-	@Test
+	/*@Test
 	public void contextLoads() {
-	}
+	}*/
 
-	@Test
+	/*@Test
 	public void addContact() {
 		log.info("Test to add a new Contact");
 
@@ -41,5 +41,5 @@ public class ContactsApplicationTests {
 		contact.setAddress("3250 BUDI KOTE MAIN ROAD SAIT COMPOUND3250 BUDI KOTE MAIN ROAD SAIT COMPOUND");
 		contact.setBirthDate("01/01/1950");
 		contact.setSocialProfile("www.linkedin.com/syed-ibrez");
-	}
+	}*/
 }

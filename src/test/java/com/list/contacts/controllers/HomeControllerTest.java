@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class HomeControllerTest {
 
-    @Test
+   /* @Test
     public void home() {
-    }
+    }*/
 }

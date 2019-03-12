@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -27,12 +30,18 @@ public class ContactsController {
      * @return
      */
     @RequestMapping(value = "/addContact", method = RequestMethod.POST)
-    public String addContact(@ModelAttribute("contact") Contact contact, ModelMap modelMap){
+    public ModelAndView addContact(@ModelAttribute("contact") Contact contact, ModelMap modelMap){
 
+    	Contact cntct = contactService.getContactByPhoneNumber(contact.getPhoneNumber());
+    	Map<String, Object> map = new HashMap<>();
+    	if(cntct != null) {
+    		map.put("dupContact", "Contact Already Exists!");
+    		return new ModelAndView("addContact",map);
+    	}
         log.info("Contact Info: "+ contact.getFirstName()+" "+ contact.getLastName());
         Contact addedContact = contactService.addContact(contact);
         modelMap.addAttribute("contactId", "Contact Saved Successfully with Id: "+addedContact.getId());
-        return "addContact";
+        	return new ModelAndView("addContact",map);
     }
 
     @RequestMapping(value = "/getAllContacts", method = RequestMethod.GET)

@@ -5,7 +5,7 @@
 
 	<groupId>com.list</groupId>
 	<artifactId>contacts</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>contacts</name>
@@ -56,7 +56,7 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.16.16</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
 		<dependency>
@@ -84,20 +84,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
-			<!-- Tomcat plugin -->  
-		<plugin>
-			<groupId>org.apache.tomcat.maven</groupId>
-			<artifactId>tomcat7-maven-plugin</artifactId>
-			<version>2.2</version>
-			<!-- <configuration>
-				<charset>ISO-8859-1</charset>
-				<url>http://localhost:8080/contactsManager/</url>
-				<update>true</update>
-				<username>admin</username>
-				<password>admin</password>
-			</configuration> -->
-		</plugin>
 		</plugins>
 	</build>
 
