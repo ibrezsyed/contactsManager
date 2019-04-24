@@ -33,5 +33,6 @@ public class MvcConfiguration implements WebMvcConfigurer {
         bean.setSuffix(".jsp");
 
         return bean;
+        
     }
 }
